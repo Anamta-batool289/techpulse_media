@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journalism Services | TechPulse Media</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root {
+  --primary-bg:#1e1e1e;
+  --secondary-bg:#3b3c41;
+  --accent:#f26e1d;
+  --highlight:#42c6ca;
+}
+
+body {
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  background:var(--primary-bg);
+  color:white;
+  scroll-padding-top:80px;
+  /* animation: fadeIn 1s ease-in-out; */
+} 
+
+/* Section animation */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+section.aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar links hover */
+nav a, .dropdown-toggle {
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+nav a:hover, .dropdown-toggle:hover {
+  transform: translateY(-2px);
+}
+
+/* Remove dropdown animation */
+.dropdown-menu {
+  transform-origin: top;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Feature cards */
+.feature-card {
+  background:var(--secondary-bg);
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+  transition:transform 0.4s ease, box-shadow 0.4s ease;
+  animation: float 6s ease-in-out infinite;
+}
+.feature-card:hover { 
+  transform:translateY(-8px) scale(1.02); 
+  box-shadow:0 12px 25px rgba(66,198,202,0.5); 
+}
+
+/* CTA button */
+.cta-btn, .cta-section a {
+  transition: all 0.4s ease;
+}
+.cta-btn:hover, .cta-section a:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Header */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:var(--secondary-bg);
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+  flex-wrap:nowrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+}
+
+/* Logo */
+header .logo { 
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+header img { height:50px; }
+header span { font-weight:700; font-size:1.5rem; color:var(--accent); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: none;
+  margin-left: 20px;
+}
+
+/* Navbar */
+nav {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  transition: max-height 0.5s ease;
+  margin-left: auto;
+}
+nav a, .dropdown-toggle {
+  color:white;
+  font-weight:600;
+  font-size:1rem;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:5px;
+  cursor:pointer;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+nav a:hover, .dropdown-toggle:hover { 
+  background:var(--accent); 
+}
+
+/* Dropdown */
+.dropdown { position: relative; }
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dropdown-toggle::after { display: none !important; }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 10px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  min-width: 200px;
+  z-index: 1000;
+  background: var(--secondary-bg);
+  border-radius: 8px;
+  border: none;
+}
+
+/* Mobile styles */
+@media(max-width:991px){
+  header { flex-wrap: wrap; padding: 10px 15px; }
+  .header-left { width: 100%; justify-content: space-between; }
+  header img { height:40px; }
+  header span { 
+    font-size:0.95rem;      
+    white-space: nowrap; 
+  }
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 10px;
+    background: var(--secondary-bg);
+    border-radius: 8px;
+  }
+  nav.active { max-height: 500px; padding: 10px 0; }
+  nav a, .dropdown-toggle { width: 100%; text-align: left; }
+  .dropdown { width: 100%; }
+  .hamburger { display: block; }
+  .dropdown-menu {
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+    background: rgba(59, 60, 65, 0.7);
+    margin-left: 0;         /* fix scroll issue */
+    padding-left: 15px;     /* keep indent inside */
+    border-radius: 0 0 8px 8px;
+  }
+  .dropdown.active .dropdown-menu { display: flex; flex-direction: column; }
+}
+
+/* Desktop dropdown */
+@media(min-width:992px){
+  .dropdown:hover .dropdown-menu { 
+    display: flex; 
+    flex-direction: column;
+  }
+}
+
+.dropdown-item {
+  padding: 12px 15px;
+  color: white;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.dropdown-item:hover { background: var(--accent); padding-left: 25px; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, rgba(66,198,202,0.85), rgba(242,110,29,0.85)), 
+              url('../assets/hero-bg.jpg') center top/cover no-repeat, 
+              var(--secondary-bg);
+  text-align:center;
+  min-height:70vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:100px 20px 0;   /* space for fixed header */
+  text-shadow:1px 1px 5px rgba(0,0,0,0.5);
+    animation: fadeIn 1s ease-in-out;   /* ✅ yahan shift kar do */
+
+}
+
+.hero p { font-size:1.3rem; max-width:700px; line-height:1.6; margin-bottom:30px; }
+.cta-btn {
+  background:var(--accent);
+  color:white;
+  padding:14px 35px;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:1.1rem;
+}
+
+/* Features */
+.features {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin:60px 20px;
+}
+.feature-card i { font-size:2.5rem; margin-bottom:12px; color:var(--accent); }
+.feature-card h4 { margin-bottom:10px; color:var(--highlight); }
+
+/* CTA Section */
+.cta-section {
+  background:linear-gradient(135deg,var(--highlight),var(--accent));
+  text-align:center;
+  padding:100px 20px;
+}
+.cta-section a {
+  background:var(--accent);
+  color:white;
+  padding:14px 40px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* Footer */
+footer {
+  background:var(--secondary-bg);
+  text-align:center;
+  padding:20px;
+  color:white;
+}
+
+/* Hero text responsive fix */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 0.95rem; }
+  .hero .btn { font-size: 0.9rem; padding: 8px 16px; }
+}
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.7rem; }
+  .hero p { font-size: 0.9rem; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.6rem; }
+  .hero p { font-size: 0.85rem; }
+  .hero .btn { font-size: 0.85rem; padding: 6px 14px; }
+}
+@media (max-width: 360px) {
+  header span { font-size: 0.85rem; } /* prevent logo text overflow */
+  .feature-card { animation: none; }  /* disable float for tiny screens */
+}
+
+/* Keyframes */
+/* Correct keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../assets/logo.png" alt="TechPulse Media Logo">
+      </a>
+      <span>TechPulse Media</span>
+    </div>
+    <button class="hamburger" onclick="toggleNav()" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+  </div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About Us</a>
+    <a href="../index.html#services">Services</a>
+    <div class="dropdown">
+        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+          Work <i class="bi bi-chevron-down ms-1"></i>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="../assets/journalism.pdf" target="_blank">
+                <i class="bi bi-file-earmark-text me-2"></i>View Journalism Sample
+            </a>
+        </div>
+    </div>
+    <a href="Contactus.html">Contact Us</a>
+  </nav>
+</header>
+
+<section class="hero" data-aos="fade-up">
+  <h1>Journalism Services</h1>
+  <p>Delivering accurate, engaging, and impactful stories across digital and print media.</p>
+  <a href="Contactus.html" class="cta-btn">Get Started</a>
+</section>
+
+<section class="features" data-aos="fade-up">
+  <div class="feature-card">
+    <i class="bi bi-newspaper"></i>
+    <h4>News Reporting</h4>
+    <p>Timely and factual reporting for online and print platforms.</p>
+  </div>
+  <div class="feature-card">
+    <i class="bi bi-pen-fill"></i>
+    <h4>Editorial Analysis</h4>
+    <p>Insightful articles, opinion pieces, and thought leadership content.</p>
+  </div>
+  <div class="feature-card">
+    <i class="bi bi-megaphone-fill"></i>
+    <h4>Public Affairs Coverage</h4>
+    <p>Reporting on events, press releases, and social impact stories.</p>
+  </div>
+</section>
+
+<section class="cta-section" data-aos="fade-up">
+  <h2>Want to <span>Amplify</span> Your Story?</h2>
+  <p>Get professional journalism services tailored to your brand and audience.</p>
+  <a href="Contactus.html">Request Service</a>
+</section>
+
+<footer>
+  <p>© 2025 TechPulse Media. All Rights Reserved</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  AOS.init({
+    duration: 1000,
+    once: false,
+    startEvent: 'load'
+  });
+
+  window.addEventListener('load', () => {
+    AOS.refresh();
+  });
+
+  // Close nav on any link click (mobile only)
+  document.querySelectorAll('nav a, .dropdown-item').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 991) {
+        document.querySelector('nav').classList.remove('active');
+      }
+    });
+  });
+});
+
+// Hamburger toggle
+function toggleNav(){
+  document.querySelector('nav').classList.toggle('active');
+}
+
+// Mobile dropdown toggle
+function toggleDropdown(el){
+  const dropdown = el.parentElement;
+  dropdown.classList.toggle('active');
+  document.querySelectorAll('.dropdown').forEach(d => {
+    if (d !== dropdown) d.classList.remove('active');
+  });
+}
+</script>
+</body>
+</html>

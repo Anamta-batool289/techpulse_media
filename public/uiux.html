@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI/UX | TechPulse Media</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1e1f26;
+      color: white;
+      margin: 0;
+      padding: 0;
+      
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #3b3c41;
+      padding: 8px 15px;
+      
+    }
+    .navbar-brand img {
+      height: 40px;
+      transition: 0.3s;
+    }
+    .navbar-brand span {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #f26e1d;
+      margin-left: 6px;
+      transition: 0.3s;
+    }
+    .navbar-toggler {
+      border: none;
+      margin-left: auto;
+    }
+    .navbar-nav .nav-link {
+      color: white;
+      font-weight: 600;
+      margin-left: 10px;
+      border-radius: 5px;
+      padding: 6px 12px;
+      white-space: nowrap; /* Ek hi line mein rakhega */
+
+    }
+    .navbar-nav .nav-link:hover {
+      background: #f26e1d;
+      color: #fff;
+    }
+
+     /* Small screens adjustments */
+
+
+    @media (max-width: 500px) {
+      .navbar-brand img { height: 28px; }
+      .navbar-brand span { font-size: 1rem; }
+      
+    }
+    @media (max-width: 350px) {
+      .navbar-brand img { height: 24px; }
+      .navbar-brand span { font-size: 0.9rem; }
+    }
+    /* Hero */
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 100vw; /* Prevent it from shrinking */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+  background: linear-gradient(135deg, #f26e1d, #42c6ca);
+  min-height: 350px;
+}
+
+.hero-content {
+  max-width: 800px;    /* andar ka text center me rakhne ke liye */
+  margin: 0 auto;
+}
+
+    .hero h1 { font-size: 2.5rem; font-weight: 700; }
+    .hero p { font-size: 1.1rem; margin: 20px auto; max-width: 700px; }
+    .cta-btn {
+      background: #3b3c41;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .cta-btn:hover { background: #f26e1d; }
+
+    /* Features */
+    section { padding: 50px 20px; margin: 0 auto; max-width: 1200px; }
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f26e1d;
+    }
+    .feature { perspective: 1000px; height: 250px; }
+    .feature-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      height: 100%;
+    }
+    .feature:hover .feature-inner { transform: rotateY(180deg); }
+    .feature-front, .feature-back {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+    .feature-front { background: #3b3c41; }
+    .feature-front i {
+      font-size: clamp(24px, 6vw, 40px);
+      margin-bottom: 15px;
+      color: #42c6ca;
+    }
+    .feature-back {
+      transform: rotateY(180deg);
+      background: #42c6ca;
+      color: black;
+    }
+
+    /* Timeline */
+    .timeline-section { width: 100%; padding: 60px 20px; text-align: center; }
+    .timeline { position: relative; margin: 40px auto; max-width: 1000px; }
+    .timeline::before {
+      content: ""; position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 4px; background: linear-gradient(180deg,#42c6ca,#f26e1d);
+      transform: translateX(-50%);
+    }
+    .timeline-item { position: relative; width: 50%; padding: 20px; }
+    .timeline-content {
+      background: #2a2b31;
+      padding: 25px;
+      border-radius: 12px;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .timeline-content h5 { font-size: 1.3rem; margin-bottom: 10px; color: #f26e1d; }
+    .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(66,198,202,0.4); }
+    .timeline-icon {
+      position: absolute; top: 20px;
+      width: 45px; height: 45px;
+      background: #fff; color: #42c6ca;
+      border: 3px solid #f26e1d; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: bold;
+      
+    }
+    .timeline-icon:hover {
+  background: #f26e1d;  /* orange */
+  color: #fff;          /* icon white ho jaye */
+  transform: scale(1.1); /* thoda zoom bhi ho */
+}
+    
+    .timeline-item.left { left: 0; text-align: right; }
+    .timeline-item.left .timeline-content { margin-right: 70px; }
+    .timeline-item.left .timeline-icon { right: -25px; }
+    .timeline-item.right { left: 50%; }
+    .timeline-item.right .timeline-content { margin-left: 70px; }
+    .timeline-item.right .timeline-icon { left: -25px; }
+
+    /* Responsive Timeline */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+    }
+@media (max-width: 768px) {
+  /* Line ko ek jagah fix karo */
+  .timeline::before {
+    left: 30px;
+  }
+
+  /* Sare items ek column me le aao */
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;   /* left/right sab ignore */
+    text-align: left !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Content ko line ke right shift karo */
+  .timeline-item .timeline-content {
+    margin-left: 80px !important;
+    margin-right: 0 !important;
+  }
+
+  /* Icon ko line pe fix karo */
+  .timeline-item .timeline-icon {
+    position: absolute;
+    left: 15px !important;  /* line ke bilkul upar */
+    right: auto !important;
+    top: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item .timeline-content {
+    margin-left: 65px !important;
+  }
+
+  .timeline-item .timeline-icon {
+    left: 5px !important;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+
+
+    
+    /* Designs */
+    #uiux-designs {   position: relative;
+background: #f8f9fb; width: 100%;  max-width: 100vw; /* Prevent it from shrinking */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0; }
+
+
+    #uiux-designs h2 { font-weight: 700; color: #f26e1d; }
+    .design-card {
+      background: #fff; border-radius: 15px; overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center; padding: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+    .design-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .design-card i {
+      font-size: clamp(24px, 8vw, 48px);
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+    .design-card:hover i { transform: scale(1.2); }
+    .design-card h5 { font-size: 1.1rem; margin-top: 12px; color: #333; }
+    #uiux-designs a { text-decoration: none !important; color: inherit; display: block; }
+
+    /* CTA */
+    .cta-section {
+      position: relative;
+      background: linear-gradient(90deg,#42c6ca,#f26e1d);
+      text-align: center;
+      padding: 100px 20px;
+      width: 100%;
+      max-width: 100vw; /* Prevent it from shrinking */
+  margin-left: auto;
+  margin-right: auto;
+ padding-left: 0;
+  padding-right: 0;
+      overflow: hidden;
+    }
+
+    .cta-section h2 { margin-bottom: 15px; font-size: 2rem; color: #1e1e1e; font-weight: 700; }
+    .cta-section h2 span { color: #ff6600; }
+    .cta-section p { color: #1e1e1e; font-size: 1rem; margin-bottom: 25px; }
+    .cta-section a {
+      background: linear-gradient(135deg,#ff6600,#ff9900);
+      color: white; padding: 14px 30px; border-radius: 50px;
+      font-weight: 600; text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .cta-section a:hover {
+      background: linear-gradient(135deg,#ff9900,#ff6600);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* 🔹 Keyframe Animations */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* 🔹 Animation Utility Classes */
+.animate {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease-out;
+}
+
+.animate.fadeInUp { animation: fadeInUp 1s ease forwards; }
+.animate.fadeInLeft { animation: fadeInLeft 1s ease forwards; }
+.animate.fadeInRight { animation: fadeInRight 1s ease forwards; }
+.animate.zoomIn { animation: zoomIn 1s ease forwards; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      background: #2a2b31;
+      color: #fff;
+      font-size: 0.9rem;
+      border-top: 3px solid #f26e1d;
+    }
+    footer p { margin: 0; color: #ddd; }
+
+    
+  </style>
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const elements = document.querySelectorAll(".animate");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.visibility = "visible";
+          entry.target.classList.add(entry.target.dataset.animate);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a class="navbar-brand d-flex align-items-center" href="../index.html">
+      <img src="../assets/logo.png" alt="Logo">
+      <span>TechPulse Media</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto text-start">
+      <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="../about.html">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="../index.html#services">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="#uiux-designs">Work</a></li>
+      <li class="nav-item"><a class="nav-link" href="Contactus.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Example -->
+<section class="hero text-center p-5 animate" data-animate="fadeInUp">
+  <h1 class="animate" data-animate="fadeInUp">UI/UX Design</h1>
+   <p class="animate" data-animate="fadeInUp">Designing smooth, engaging, and intuitive user experiences...</p>
+  <a href="Contactus.html" class="btn btn-dark rounded-pill px-4 mt-3 animate" data-animate="zoomIn">
+    Start Your Project
+  </a>
+</section>
+
+
+
+<!-- Features -->
+<section id="features" class="animate" data-animate="fadeInUp">
+  <h2 class="animate" data-animate="fadeInUp">Our UI/UX Features</h2>
+  <div class="row g-4">
+    <div class="col-lg-4 col-md-6 col-sm-12 animate" data-animate="fadeInLeft">
+      <div class="feature">
+        <div class="feature-inner">
+          <div class="feature-front">
+            <i class="fas fa-paint-brush"></i>
+            <h5>Creative UI</h5>
+          </div>
+          <div class="feature-back">
+            <p>Modern, clean, and engaging interfaces tailored for your audience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 animate" data-animate="zoomIn">
+      <div class="feature">
+        <div class="feature-inner">
+          <div class="feature-front">
+            <i class="fas fa-user-check"></i>
+            <h5>User Experience</h5>
+          </div>
+          <div class="feature-back">
+            <p>Optimized workflows ensuring intuitive navigation and usability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 animate" data-animate="fadeInRight">
+      <div class="feature">
+        <div class="feature-inner">
+          <div class="feature-front">
+            <i class="fas fa-mobile-screen-button"></i>
+            <h5>App Redesign</h5>
+          </div>
+          <div class="feature-back">
+            <p>Transforming outdated designs into modern, user-friendly apps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section id="process" class="timeline-section animate" data-animate="fadeInUp">
+  <h2 class="animate" data-animate="fadeInUp">Our Design Process</h2>
+  <div class="timeline">
+    <div class="timeline-item left animate" data-animate="fadeInLeft">      <div class="timeline-icon"><i class="fas fa-lightbulb"></i></div>
+      <div class="timeline-content"><h5>Ideation</h5><p>Brainstorming and defining design goals.</p></div>
+    </div>
+    <div class="timeline-item right animate" data-animate="fadeInRight">
+      <div class="timeline-icon"><i class="fas fa-pencil-ruler"></i></div>
+      <div class="timeline-content"><h5>Wireframing</h5><p>Structuring layouts with user flows in mind.</p></div>
+    </div>
+    <div class="timeline-item left animate" data-animate="fadeInLeft">
+      <div class="timeline-icon"><i class="fas fa-palette"></i></div>
+      <div class="timeline-content"><h5>Prototyping</h5><p>Interactive mockups for testing and iteration.</p></div>
+    </div>
+   <div class="timeline-item right animate" data-animate="fadeInRight">
+      <div class="timeline-icon"><i class="fas fa-rocket"></i></div>
+      <div class="timeline-content"><h5>Launch</h5><p>Final implementation for a polished user experience.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- UI/UX Designs -->
+<section id="uiux-designs" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Our UI/UX Designs</h2>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <a href="/Assets/uiux1.png" target="_blank">
+          <div class="design-card h-100">
+            <i class="fas fa-plane-departure" style="color:#f26e1d;"></i>
+            <h5>Travel App Design</h5>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <a href="/Assets/uiux2.png" target="_blank">
+          <div class="design-card h-100">
+            <i class="fas fa-users" style="color:#42c6ca;"></i>
+            <h5>Social Media UI</h5>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <a href="/Assets/uiux3.png" target="_blank">
+          <div class="design-card h-100">
+            <i class="fas fa-user-friends" style="color:#f26e1d;"></i>
+            <h5>Friends Group App</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section animate" data-animate="zoomIn">
+  <div class="container">
+     <h2 class="animate" data-animate="fadeInUp">Want <span>Engaging</span> Designs?</h2>
+    <p class="animate" data-animate="fadeInUp">We turn complex problems into simple...</p>
+    <a href="Contactus.html" class="animate" data-animate="zoomIn">
+      Request UI/UX Consultation <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 TechPulse Media | All Rights Reserved</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

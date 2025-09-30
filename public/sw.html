@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Contact Test</title>
+</head>
+<body>
+  <h2>Contact Test (Email + Push)</h2>
+  <form id="form">
+    <input id="name" placeholder="Name" required><br>
+    <input id="email" placeholder="Email" required><br>
+    <input id="service" placeholder="Service"><br>
+    <input id="budget" placeholder="Budget"><br>
+    <input id="deadline" placeholder="Deadline"><br>
+    <textarea id="message" placeholder="Message"></textarea><br>
+    <button type="submit">Send</button>
+  </form>
+
+<script>
+async function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+  const rawData = atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+  for (let i = 0; i < rawData.length; ++i) outputArray[i] = rawData.charCodeAt(i);
+  return outputArray;
+}
+
+async function registerSWandSubscribe() {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    console.log('Push not supported');
+    return null;
+  }
+  const reg = await navigator.serviceWorker.register('/sw.js');
+  console.log('SW registered', reg);
+
+  // get public key from server
+  const res = await fetch('/vapidPublicKey');
+  const publicKey = await res.text();
+  const sub = await reg.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: urlBase64ToUint8Array(publicKey)
+  });
+  console.log('Subscribed for push:', sub.endpoint);
+  return sub;
+}
+
+document.getElementById('form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const service = document.getElementById('service').value;
+  const budget = document.getElementById('budget').value;
+  const deadline = document.getElementById('deadline').value;
+  const message = document.getElementById('message').value;
+
+  let subscription = null;
+  try {
+    subscription = await registerSWandSubscribe();
+  } catch (err) {
+    console.error('Subscription failed:', err);
+  }
+
+  const payload = { name, email, service, budget, deadline, message, subscription };
+  const resp = await fetch('/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  const json = await resp.json();
+  alert(json.message || 'Submitted');
+});
+</script>
+</body>
+</html>

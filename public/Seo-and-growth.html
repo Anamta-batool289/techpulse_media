@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO & Growth | TechPulse Media</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    /* Navbar toggler fix */
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22 M4 15h22 M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Hero overlay animation responsive */
+@media(max-width: 768px) {
+  .hero {
+    padding: 70px 15px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .hero::before {
+    width: 150%;
+    height: 150%;
+  }
+}
+
+@media(max-width: 480px) {
+  .hero {
+    padding: 50px 10px;
+  }
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+  }
+  .cta-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .hero::before {
+    width: 120%;
+    height: 120%;
+  }
+}
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color:#1e1e1e;
+      color:white;
+      margin:0;
+      padding:0;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color:#3b3c41;
+    }
+    .navbar-brand span {
+      font-weight:700;
+      font-size:1.3rem;
+      color:#f26e1d;
+      margin-left:8px;
+    }
+    .navbar-nav .nav-link {
+      color:white;
+      font-weight:600;
+      margin-left:10px;
+      padding:8px 12px;
+      border-radius:5px;
+      transition:0.3s;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      background-color:#f26e1d;
+      color:white;
+    }
+
+    
+
+    /* Hero */
+    .hero {
+  background: linear-gradient(135deg, #42c6ca, #2aa4a7); /* gradient */
+  text-align: center;
+  padding: 100px 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft animated overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  animation: heroPulse 8s infinite linear;
+}
+
+@keyframes heroPulse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+  color: #f8f8f8;
+}
+
+/* CTA Button */
+.cta-btn {
+  background-color: #f26e1d;
+  color: white;
+  font-weight: bold;
+  padding: 12px 28px; /* thoda chhota */
+  border-radius: 50px; /* rounded pill button */
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 5px 15px rgba(242,110,29,0.4);
+}
+
+.cta-btn:hover {
+  background-color: #e65a00;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(242,110,29,0.5);
+}
+
+    /* Sections */
+    section { padding:60px 20px; margin:0; }
+    section h2 {
+      font-size:2rem;
+      font-weight:700;
+      text-align:center;
+      margin-bottom:40px;
+      color:white;
+    }
+    section p {
+      font-size:1rem;
+      text-align:center;
+      max-width:800px;
+      margin:auto;
+      color:white;
+    }
+
+    /* Features */
+    .feature {
+      background-color:#3b3c41;
+      padding:25px;
+      border-radius:15px;
+      text-align:center;
+      transition:0.3s;
+    }
+    .feature:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(66,198,202,0.5); }
+    .feature i { font-size:2.5rem; color:#f26e1d; margin-bottom:15px; }
+    .feature h4 { margin-bottom:15px; color:#42c6ca; }
+    .feature p { color:white; }
+
+    /* Process */
+    .step {
+      background-color:#3b3c41;
+      padding:25px;
+      border-radius:12px;
+      text-align:center;
+      transition:0.3s;
+    }
+    .step:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(66,198,202,0.5); }
+    .step h3 { margin-bottom:15px; color:#f26e1d; }
+    .step p { color:white; }
+
+    /* Portfolio */
+    .portfolio-item {
+      background-color:#3b3c41;
+      border-radius:12px;
+      padding:20px;
+      text-align:center;
+      transition:0.3s;
+    }
+    .portfolio-item:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(66,198,202,0.5); }
+    .portfolio-item i { font-size:3rem; color:#f26e1d; }
+    .portfolio-item h3 { margin-top:15px; color:#42c6ca; }
+    .portfolio-item p { color:white; }
+
+    /* CTA Section */
+ .cta-section {
+  background: linear-gradient(135deg, #f26e1d, #42c6ca); /* Gradient background */
+  text-align: center;
+  padding: 80px 20px;
+
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical center */
+  align-items: center;    /* Horizontal center */
+}
+
+.cta-section h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #fff;
+  max-width: 700px;
+}
+
+/* Button same as before but smaller */
+.cta-section .cta-btn {
+  background-color: #f26e1d;
+  color: white;
+  font-weight: bold;
+  padding: 10px 25px; /* smaller than before */
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.cta-section .cta-btn:hover {
+  background-color: #e65a00;
+}
+
+
+    /* Footer */
+    footer {
+      text-align:center;
+      padding:20px;
+      background-color:#514b4d;
+      color:white;
+      font-size:1rem;
+    }
+
+    /* Responsive Fixes */
+    @media(max-width:768px) {
+      .hero h1 { font-size:2rem; }
+      .hero p { font-size:1rem; }
+      section h2 { font-size:1.8rem; }
+    }
+    @media(max-width:480px) {
+      .hero { padding:60px 15px; }
+      .hero h1 { font-size:1.7rem; }
+      .cta-btn { padding:12px 25px; font-size:1rem; }
+      section { padding:40px 15px; }
+    }
+    @media(max-width:350px) {
+      .navbar-brand span { font-size:1rem; }
+      .hero h1 { font-size:1.4rem; }
+      .hero p { font-size:0.9rem; }
+      .cta-btn { padding:10px 20px; font-size:0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="../index.html">
+      <img src="../assets/logo.png" alt="TechPulse Media Logo" height="40">
+      <span>TechPulse Media</span>
+    </a>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="../index.html#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#case-studies">Work</a></li>
+        <li class="nav-item"><a class="nav-link" href="Contactus.html">Contact Us</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" data-aos="fade-up">
+  <h1>SEO & Growth</h1>
+  <p>Boost your online visibility, drive traffic, and grow your business with data-driven SEO strategies.</p>
+  <a href="Contactus.html" class="cta-btn">Get Free SEO Audit</a>
+</section>
+
+<!-- Features -->
+<section data-aos="fade-up">
+  <h2>Our SEO Features</h2>
+  <div class="row g-4 mt-3">
+    <div class="col-md-6 col-lg-3"><div class="feature"><i class="bi bi-search"></i><h4>Keyword Research</h4><p>Identify high-impact keywords to attract your target audience.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="feature"><i class="bi bi-speedometer2"></i><h4>Site Optimization</h4><p>Improve site speed, structure, and on-page SEO.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="feature"><i class="bi bi-bar-chart-line"></i><h4>Analytics & Tracking</h4><p>Monitor performance and adjust with data insights.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="feature"><i class="bi bi-link-45deg"></i><h4>Link Building</h4><p>Increase authority and presence through backlinks.</p></div></div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process" data-aos="fade-up">
+  <h2>Our SEO Process</h2>
+  <div class="row g-4 mt-3">
+    <div class="col-md-6 col-lg-3"><div class="step"><h3>1. SEO Audit</h3><p>Analyze website, competitors, and niche.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="step"><h3>2. Keyword Strategy</h3><p>Target keywords for the right audience.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="step"><h3>3. On-Page Optimization</h3><p>Meta tags, speed, and structured data.</p></div></div>
+    <div class="col-md-6 col-lg-3"><div class="step"><h3>4. Off-Page Growth</h3><p>Backlinks, outreach, and content marketing.</p></div></div>
+  </div>
+</section>
+
+<!-- Case Studies -->
+<section id="case-studies" data-aos="fade-up">
+  <h2>SEO Case Studies</h2>
+  <div class="row g-4 mt-3">
+    <div class="col-md-4"><div class="portfolio-item"><i class="bi bi-graph-up-arrow"></i><h3>Traffic Growth</h3><p>Organic traffic increased by 250% in 3 months.</p></div></div>
+    <div class="col-md-4"><div class="portfolio-item"><i class="bi bi-shop"></i><h3>E-commerce SEO</h3><p>20+ products ranked on Google page 1.</p></div></div>
+    <div class="col-md-4"><div class="portfolio-item"><i class="bi bi-geo-alt"></i><h3>Local SEO</h3><p>Leads doubled in 3 months with local SEO.</p></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" data-aos="zoom-in">
+  <h2>Ready to Rank Higher?</h2>
+  <p>Let’s grow your business with proven SEO strategies.</p>
+  <a href="Contactus.html" class="cta-btn">Request SEO Consultation</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 TechPulse Media | All Rights Reserved</p>
+</footer>
+
+
+  <script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+    // Mobile pe disable karna ho to ye line on rakho
+    disable: window.innerWidth < 576
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

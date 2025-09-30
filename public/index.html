@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechPulse Media | Digital Solutions Agency</title>
+  <link rel="icon" href="favicon.icon" type="/Assets/favicon.jpg">
+
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background-color:#1e1e1e; color:white; margin:0; }
+
+    /* Navbar */
+    .navbar {
+      background-color:#3b3c41;
+      /* padding:15px 30px; */
+    }
+    .navbar-brand img {
+      height:60px;
+      width:auto;
+      margin-right:10px;
+      transition:0.3s;
+    }
+    .navbar-brand span {
+      font-weight:700;
+      font-size:1.6rem;
+      color:#f26e1d;
+    }
+    .navbar .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+    .navbar .nav-link {
+      font-weight:600;
+      margin-left:20px;
+      color:white;
+      padding: 8px 15px; /* thoda space taake bg visible ho */
+      border-radius: 6px;
+  transition: all 0.3s ease;
+    }
+    .navbar .nav-link:hover {
+      background-color:#f26e1d;
+      /* background-color:transparent; */
+    }
+
+    /* Hamburger (same as About page) */
+   .navbar-toggler {
+  border: 2px solid #6e6661; 
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+    .navbar-toggler-icon {
+  filter: invert(1);
+}
+/* Hover effect */
+.navbar-toggler:hover {
+  border-color: #fff;       /* hover pe white border */
+}
+
+    /* Dropdown */
+    .dropdown-menu {
+      background-color:#3b3c41;
+      border:none;
+      border-radius:0.5rem;
+      min-width:200px;
+    }
+    .dropdown-item {
+      color:white;
+      font-weight:600;
+      padding:10px 20px;
+    }
+    .dropdown-item:hover {
+      background-color:#f26e1d;
+      color:white;
+    }
+
+
+    
+    /* Hero */
+    .hero { background-color:#42c6ca; text-align:center; padding:100px 20px; }
+    .hero h2 { font-size:3rem; font-weight:700; color:white; }
+    .hero p { font-size:1.5rem; color:white; margin-top:15px; }
+    .hero .btn { font-weight:bold; font-size:1.2rem; }
+
+    /* Section Titles */
+    section h3 { font-size:2.5rem; font-weight:700; margin-bottom:40px; text-align:center; color:white; }
+
+    /* Service Cards */
+    .service-card { background-color:#f26e1d; padding:20px; text-align:center; border-radius:0.5rem; transition: all 0.3s ease; cursor:pointer; color:white; }
+    .service-card i { font-size:2.5rem; margin-bottom:15px; transition: transform 0.3s; }
+    .service-card h5 { font-weight:700; font-size:1.3rem; margin-bottom:10px; }
+    .service-card a, .service-card span { color:white; font-size:1.1rem; text-decoration:none; transition: color 0.3s; }
+    .service-card-wrapper { text-decoration: none; }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(66,198,202,0.5); }
+    .service-card:hover i { transform: translateY(-5px); }
+    .service-card:hover a, .service-card:hover span { color:#949797; }
+    .service-card.bg-blue { background-color:#42c6ca; }
+    .service-card.bg-orange { background-color:#ec7722; }
+    .service-card.bg-gray { background-color:#514b4d; }
+
+    /* CTA */
+    .cta {
+      text-align:center;
+      background: linear-gradient(135deg, #42c6ca, #f26e1d);
+      padding:80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: #f26e1d;   
+      border: none;                
+      font-weight: bold;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+    }
+    .btn-primary:hover {
+      background-color: #ffffff;
+      color: #f26e1d;
+      border: none;
+    }
+
+    /* Footer */
+    footer { text-align:center; background-color:#514b4d; padding:20px; color:white; font-size:1.1rem; margin-top:50px; }
+
+    /* Responsive */
+    @media(max-width:992px){
+      .navbar-brand img { height:50px; }
+      .navbar-brand span { font-size:1.2rem; }
+    }
+    @media(max-width:768px){
+      .hero { padding:80px 15px; }
+      .hero h2 { font-size:2rem; }
+      .hero p { font-size:1.2rem; }
+    }
+    @media(max-width:576px){
+      .navbar-brand img { height:40px; }
+      .navbar-brand span { font-size:1rem; }
+    }
+    @media(max-width:375px){
+      .hero h2 { font-size:1.5rem; }
+    }
+    @media(max-width:320px){
+      .hero h2 { font-size:1.3rem; }
+    }
+    @media(max-width: 576px) {
+  .hero h2, .hero p, .hero .btn {
+    animation: fadeInUp 1s ease forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    
+    <!-- Logo + Text -->
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="Assets/logo.png" alt="Logo">
+      <span>TechPulse Media</span>
+    </a>
+
+    <!-- Hamburger -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" aria-controls="navbarNav" 
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" 
+             data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+          <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+            <li><a class="dropdown-item" href="webDevelopment.html">Web Development</a></li>
+            <li><a class="dropdown-item" href="Seo-and-growth.html">SEO & Growth</a></li>
+            <li><a class="dropdown-item" href="uiux.html">UI / UX Design</a></li>
+            <li><a class="dropdown-item" href="canvaDesign.html">Canva Design</a></li>
+            <li><a class="dropdown-item" href="Journalism.html">Journalism</a></li>
+            <li><a class="dropdown-item" href="contentwriting.html">Content Writing</a></li>
+            <li><a class="dropdown-item" href="reasearchAnalysis.html">Research & Analysis</a></li>
+            <li><a class="dropdown-item" href="articlePublishing.html">Article Publishing</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="Contactus.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- Hero -->
+<section class="hero" data-aos="fade-up">
+  <h2 data-aos="fade-right">Empowering Your Digital Presence</h2>
+  <p data-aos="fade-left" data-aos-delay="200">We craft websites, design interfaces, optimize growth, and make your brand shine online.</p>
+  <a href="Contactus.html" class="btn btn-primary btn-lg px-4 py-3" data-aos="zoom-in" data-aos-delay="400">
+    Get Started <i class="bi bi-arrow-right"></i>
+  </a>
+</section>
+
+<!-- Services -->
+<section id="services" class="container py-5" data-aos="fade-up">
+  <h3 data-aos="fade-down">Our Services</h3>
+  <div class="row g-4">
+    <div class="col-md-3" data-aos="flip-left" data-aos-delay="100">
+      <a href="webDevelopment.html" class="service-card-wrapper">
+        <div class="service-card">
+          <i class="bi bi-laptop"></i>
+          <h5>Web Development</h5>
+          <span>Learn More →</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3" data-aos="flip-left" data-aos-delay="200">
+      <a href="Seo-and-growth.html" class="service-card-wrapper">
+        <div class="service-card bg-blue">
+          <i class="bi bi-bar-chart-line"></i>
+          <h5>SEO & Growth</h5>
+          <span>Learn More →</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3" data-aos="flip-left" data-aos-delay="300">
+      <a href="uiux.html" class="service-card-wrapper">
+        <div class="service-card bg-orange">
+          <i class="bi bi-palette"></i>
+          <h5>UI / UX Design</h5>
+          <span>Learn More →</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3" data-aos="flip-left" data-aos-delay="400">
+      <a href="canvaDesign.html" class="service-card-wrapper">
+        <div class="service-card bg-gray">
+          <i class="bi bi-brush"></i>
+          <h5>Canva Design</h5>
+          <span>Learn More →</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3" data-aos="flip-left" data-aos-delay="500"> <a href="Journalism.html" class="service-card-wrapper"> <div class="service-card"> <i class="bi bi-newspaper"></i> <h5>Journalism</h5> <span>Learn More →</span> </div> </a> </div> <div class="col-md-3" data-aos="flip-left" data-aos-delay="600"> <a href="contentwriting.html" class="service-card-wrapper"> <div class="service-card bg-blue"> <i class="bi bi-pencil-square"></i> <h5>Content Writing</h5> <span>Learn More →</span> </div> </a> </div> <div class="col-md-3" data-aos="flip-left" data-aos-delay="700"> <a href="reasearchAnalysis.html" class="service-card-wrapper"> <div class="service-card bg-orange"> <i class="bi bi-search"></i> <h5>Research & Analysis</h5> <span>Learn More →</span> </div> </a> </div> <div class="col-md-3" data-aos="flip-left" data-aos-delay="800"> <a href="articlePublishing.html" class="service-card-wrapper"> <div class="service-card bg-gray"> <i class="bi bi-journal-text"></i> <h5>Article Publishing</h5> <span>Learn More →</span> </div> </a> </div> </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta position-relative py-5" data-aos="fade-up">
+  <div class="container text-center" style="position:relative; z-index:1; max-width:900px;" data-aos="fade-up">
+    <h3>Ready to Elevate Your Brand?</h3>
+    <p>Lets create stunning websites, designs, and content that drive real results for your business.</p>
+    <a href="Contactus.html" class="btn btn-primary btn-lg" data-aos="zoom-in" data-aos-delay="200">
+      Get Started <i class="bi bi-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer data-aos="fade-up">
+  <p>© 2025 TechPulse Media | All Rights Reserved</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,   // animation speed
+    once: true,       // ek hi dafa chale
+    offset: 50,       // 50px scroll pe trigger
+    anchorPlacement: 'top-bottom' // viewport ke hisaab se trigger
+  });
+
+  // Resize hone par refresh karo
+  window.addEventListener('resize', () => {
+    AOS.refresh();
+  });
+</script>
+
+</body>
+</html>

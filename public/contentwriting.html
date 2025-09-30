@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Writing | TechPulse Media</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- AOS animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root {
+  --primary-bg:#1e1e1e;
+  --secondary-bg:#3b3c41;
+  --accent:#f26e1d;
+  --highlight:#42c6ca;
+  --card-bg:linear-gradient(145deg,#3b3c41,#2a2a2a);
+}
+
+html { scroll-behavior: smooth; }
+body { 
+  font-family:'Poppins',sans-serif;
+  background:var(--primary-bg);
+  color:white;
+  margin:0;
+  scroll-padding-top:80px;
+}
+
+/* Navbar */
+.navbar {
+  background-color:#3b3c41;
+  padding:10px 15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.5);
+}
+.navbar-brand img {
+  height:50px;
+  width:auto;
+  margin-right:10px;
+  transition:0.3s;
+}
+.navbar-brand span {
+  font-weight:700;
+  font-size:1.4rem;
+  color:#f26e1d;
+}
+.navbar .nav-link {
+  font-weight:600;
+  margin-left:20px;
+  color:white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.navbar .nav-link:hover {
+  background-color:#f26e1d;
+}
+
+/* Hamburger */
+.navbar-toggler {
+  border: 2px solid #6e6661; 
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+.navbar-toggler:hover {
+  border-color: #fff;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  background-color:#3b3c41;
+  border:none;
+  border-radius:0.5rem;
+  min-width:200px;
+}
+.dropdown-item {
+  color:white;
+  font-weight:600;
+  padding:10px 20px;
+}
+.dropdown-item:hover {
+  background-color:#f26e1d;
+  color:white;
+}
+
+/* Hero Section */
+.hero {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(135deg,#42c6ca,#f26e1d);
+  padding: 50px 15px 30px 15px; /* Optional: reduce top padding slightly */
+  /* border-radius:15px; */
+  margin: 0px 10px 15px 10px; /* Reduce top margin */
+  color:white;
+  position:relative;
+  overflow: hidden;
+}
+
+.hero-text {
+  flex:1;
+  z-index:2;
+  max-width: 500px;
+}
+
+.hero-text h1 { font-size:2rem; font-weight:700; margin-bottom:15px; line-height:1.2; }
+.hero-text p { font-size:0.95rem; line-height:1.5; margin-bottom:20px; }
+
+.hero-text .cta-btn {
+  background:white;
+  color:#f26e1d;
+  padding:12px 25px;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:0.95rem;
+  transition:0.3s;
+  display: inline-block;
+}
+.hero-text .cta-btn:hover { background:#e65a00; color:white; transform:translateY(-3px); }
+
+.hero-img {
+  flex:1;
+  text-align:center;
+  z-index:2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-img img {
+  width:100%;
+  max-width:350px;
+  height:auto;
+  border-radius:15px;
+  box-shadow:0 12px 35px rgba(66,198,202,0.3);
+  transform: rotate(0deg);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.hero-img img:hover {
+  transform: scale(1.03);
+  box-shadow:0 15px 40px rgba(66,198,202,0.5);
+}
+
+/* Services Section */
+.services {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin:15px 10px; /* Reduced margin */
+}
+.service-card {
+  background:var(--card-bg);
+  padding:20px 15px;
+  border-radius:15px;
+  text-align:center;
+  transition:0.3s;
+  position:relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.service-card:hover { transform:translateY(-7px); box-shadow:0 12px 30px rgba(66,198,202,0.5); }
+.service-card i { font-size:2rem; margin-bottom:10px; color:var(--highlight); }
+.service-card h4 { font-size:1.1rem; color:var(--accent); margin-bottom:8px; }
+.service-card p { font-size:0.85rem; line-height:1.4; color:white; }
+
+/* CTA Section */
+.cta-section-alt {
+  background:linear-gradient(135deg,var(--highlight),var(--accent));
+  text-align:center;
+  padding:40px 15px;
+  border-radius:20px;
+  margin:15px 10px; /* Reduced margin */
+  box-shadow:0 12px 30px rgba(0,0,0,0.4);
+}
+.cta-section-alt h2 { font-size:1.8rem; margin-bottom:15px; line-height:1.2; }
+.cta-section-alt span { color:white; }
+.cta-section-alt p { font-size:0.95rem; margin-bottom:20px; max-width: 100%; margin-left: auto; margin-right: auto; }
+.cta-section-alt a {
+  background:white;
+  color:var(--accent);
+  padding:12px 30px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+  box-shadow:0 6px 25px rgba(0,0,0,0.2);
+  display: inline-block;
+  font-size:0.95rem;
+}
+.cta-section-alt a:hover { background:var(--accent); color:white; transform:translateY(-3px); }
+
+/* Footer */
+footer { 
+  background:var(--secondary-bg); 
+  text-align:center; 
+  padding:15px; 
+  color:white; 
+  font-size:0.85rem; 
+  margin-top: 5px; /* Reduced margin */
+}
+
+/* Media Queries for Responsiveness */
+@media(min-width:577px) {
+  .navbar { padding: 12px 20px; }
+  .navbar-brand img { height: 55px; }
+  .navbar-brand span { font-size: 1.5rem; }
+  .navbar .nav-link { font-size: 1rem; }
+  .hero { padding: 80px 20px 40px 20px; margin: 0px 20px 20px 20px; } /* Reduced bottom margin */
+  .hero-text { max-width: 600px; }
+  .hero-text h1 { font-size: 3rem; }
+  .hero-text p { font-size: 1.2rem; }
+  .hero-text .cta-btn { padding: 14px 35px; font-size: 1.1rem; }
+  .hero-img img { max-width: 450px; }
+  .services { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 20px; } /* Reduced margin */
+  .service-card { padding: 25px 20px; }
+  .service-card i { font-size: 3rem; }
+  .service-card h4 { font-size: 1.3rem; }
+  .service-card p { font-size: 1rem; }
+  .cta-section-alt { padding: 60px 20px; margin: 20px 20px; } /* Reduced margin */
+  .cta-section-alt h2 { font-size: 2.5rem; }
+  .cta-section-alt p { font-size: 1.2rem; max-width: 800px; }
+  .cta-section-alt a { padding: 14px 45px; font-size: 1.1rem; }
+  footer { font-size: 1rem; padding: 20px; margin-top: 10px; } /* Reduced margin */
+}
+
+@media(max-width:576px) {
+  .navbar { padding: 8px 12px; }
+  .navbar-brand img { height: 40px; }
+  .navbar-brand span { font-size: 1.2rem; }
+  .navbar .nav-link { margin-left: 0; margin-bottom: 10px; }
+  .navbar-toggler { margin-left: 15px; } /* Adjusted for mobile */
+  
+  /* Hero section adjustments for mobile */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 15px 30px 15px;
+    margin: 0px 10px 10px 10px; /* Reduced bottom margin */
+  }
+  
+  .hero-text {
+    margin-bottom: 20px;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .hero-img {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .hero-img img {
+    max-width: 280px;
+  }
+  
+  .services { margin: 10px 10px; } /* Reduced margin */
+  .cta-section-alt { margin: 10px 10px; } /* Reduced margin */
+}
+
+/* Extra small screens (300px) */
+@media(max-width:350px) {
+  .navbar { padding: 6px 10px; }
+  .navbar-brand img { height: 35px; }
+  .navbar-brand span { font-size: 1rem; }
+  .navbar-toggler { padding: 3px 6px; margin-left: 10px; } /* Adjusted for small screens */
+  
+  .hero { padding: 0px 10px 20px 10px; margin: 40px 5px 5px 5px; border-radius: 10px; } /* Reduced bottom margin */
+  .hero-text { margin-bottom: 15px; text-align: center; }
+  .hero-text h1 { font-size: 1.6rem; }
+  .hero-text p { font-size: 0.85rem; }
+  .hero-text .cta-btn { padding: 10px 20px; font-size: 0.85rem; }
+  .hero-img img { max-width: 220px; }
+  
+  .services { grid-template-columns: 1fr; gap: 10px; margin: 5px 5px; } /* Reduced margin */
+  .service-card { padding: 15px; }
+  .service-card i { font-size: 1.8rem; }
+  .service-card h4 { font-size: 1rem; }
+  .service-card p { font-size: 0.8rem; }
+  
+  .cta-section-alt { padding: 30px 10px; margin: 5px 5px; border-radius: 15px; } /* Reduced margin */
+  .cta-section-alt h2 { font-size: 1.5rem; }
+  .cta-section-alt p { font-size: 0.85rem; }
+  .cta-section-alt a { padding: 10px 25px; font-size: 0.85rem; }
+  
+  footer { font-size: 0.75rem; padding: 10px; margin-top: 2px; } /* Reduced margin */
+}
+
+/* Animation for hero elements on mobile */
+@media(max-width: 576px) {
+  .hero h1, .hero p, .hero .cta-btn {
+    animation: fadeInUp 1s ease forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="../index.html">
+      <img src="../assets/logo.png" alt="TechPulse Media Logo">
+      <span>TechPulse Media</span>
+    </a>
+    
+    <!-- Hamburger -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" aria-controls="navbarNav" 
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#services">Services</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button" 
+             data-bs-toggle="dropdown" aria-expanded="false">Work</a>
+          <ul class="dropdown-menu" aria-labelledby="workDropdown">
+            <li><a class="dropdown-item" href="/Assets/SEO Blog.pdf" target="_blank">Sample 1</a></li>
+            <li><a class="dropdown-item" href="/Assets/web(home,about,service).pdf" target="_blank">Sample 2</a></li>
+            <li><a class="dropdown-item" href="/Assets/Product Description.pdf" target="_blank">Sample 3</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="Contactus.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" data-aos="fade-up">
+  <div class="hero-text">
+    <h1>Content That Converts</h1>
+    <p>Engaging content for blogs, websites, product pages, social media, and marketing campaigns.</p>
+    <a href="Contactus.html" class="cta-btn">Get Started</a>
+  </div>
+
+  <div class="hero-img">
+    <img src="/Assets/image1.png" alt="Content Illustration">
+  </div>
+</section>
+
+
+<!-- Services -->
+<section class="services" data-aos="fade-up">
+  <div class="service-card"><i class="bi bi-pencil-square"></i><h4>SEO Blogs</h4><p>High-quality blogs optimized for search engines and audience engagement.</p></div>
+  <div class="service-card"><i class="bi bi-file-text"></i><h4>Website Content</h4><p>Compelling copy for landing pages, about pages, and service pages.</p></div>
+  <div class="service-card"><i class="bi bi-newspaper"></i><h4>Product Descriptions</h4><p>Persuasive descriptions that convert visitors into customers.</p></div>
+  <div class="service-card"><i class="bi bi-megaphone"></i><h4>Social Media Posts</h4><p>Engaging posts for Instagram, Facebook, LinkedIn, and Twitter.</p></div>
+  <div class="service-card"><i class="bi bi-envelope-paper"></i><h4>Email Campaigns</h4><p>Compelling emails that drive opens, clicks, and conversions.</p></div>
+  <div class="service-card"><i class="bi bi-chat-left-text"></i><h4>Marketing Copy</h4><p>Persuasive copy for ads, brochures, and digital campaigns.</p></div>
+  <div class="service-card"><i class="bi bi-camera-reels"></i><h4>Video Scripts</h4><p>Engaging scripts for promotional, explainer, or social media videos.</p></div>
+  <div class="service-card"><i class="bi bi-journal-text"></i><h4>Whitepapers</h4><p>Detailed research-based content for industry authority and lead generation.</p></div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section-alt" data-aos="fade-up">
+  <h2>Boost Your <span>Brand's Voice</span></h2>
+  <p>Let our expert writers craft content that engages, informs, and converts.</p>
+  <a href="Contactus.html">Start Now</a>
+</section>
+
+<footer>
+  <p>© 2025 TechPulse Media. All Rights Reserved</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration:1000 });
+</script>
+</body>
+</html>
